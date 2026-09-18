@@ -684,6 +684,11 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
               <span class="ds-radio" aria-hidden="true"></span>
               <span class="option-text"><span class="option-title">No equipment</span><span class="option-desc">Just you — a room, a wall, maybe a sturdy chair</span></span>
             </label>
+            <label class="option-card">
+              <input class="visually-hidden-input" type="radio" name="qsEquipment" value="band">
+              <span class="ds-radio" aria-hidden="true"></span>
+              <span class="option-text"><span class="option-title">Resistance band</span><span class="option-desc">Just a band — packs flat, works almost anywhere</span></span>
+            </label>
           </div>
         </fieldset>
         <div class="field-row" style="margin-top:var(--ds-space-05);">
@@ -1058,7 +1063,7 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
         <label class="ds-label" for="preference">Food preference</label>
         <input class="ds-input" type="text" id="preference" list="preferenceOptions" placeholder="Type or choose: Vegetarian, Non-vegetarian, Vegan">
         <datalist id="preferenceOptions"><option value="Vegetarian"><option value="Non-vegetarian"><option value="Vegan"></datalist>
-        <p class="ds-input-helper">Pescatarian, eggetarian, and similar are matched to the closest of these three.</p>
+        <p class="ds-input-helper">Pescatarian, eggetarian, and similar are matched to the closest of these three. Non-vegetarian plans mix in vegetarian and vegan meals too, not meat or eggs at every sitting — closer to how people actually eat.</p>
       </div>
       <div class="field-row">
         <label class="ds-label">Cuisine style</label>
@@ -1080,9 +1085,39 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
             <span class="option-title">Mediterranean</span>
           </label>
           <label class="option-card">
-            <input class="visually-hidden-input cuisine-check" type="checkbox" value="asian">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="chinese">
             <span class="ds-checkbox" aria-hidden="true"></span>
-            <span class="option-title">Asian</span>
+            <span class="option-title">Chinese</span>
+          </label>
+          <label class="option-card">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="japanese">
+            <span class="ds-checkbox" aria-hidden="true"></span>
+            <span class="option-title">Japanese</span>
+          </label>
+          <label class="option-card">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="thai">
+            <span class="ds-checkbox" aria-hidden="true"></span>
+            <span class="option-title">Thai</span>
+          </label>
+          <label class="option-card">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="italian">
+            <span class="ds-checkbox" aria-hidden="true"></span>
+            <span class="option-title">Italian</span>
+          </label>
+          <label class="option-card">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="korean">
+            <span class="ds-checkbox" aria-hidden="true"></span>
+            <span class="option-title">Korean</span>
+          </label>
+          <label class="option-card">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="mexican">
+            <span class="ds-checkbox" aria-hidden="true"></span>
+            <span class="option-title">Mexican</span>
+          </label>
+          <label class="option-card">
+            <input class="visually-hidden-input cuisine-check" type="checkbox" value="middleEastern">
+            <span class="ds-checkbox" aria-hidden="true"></span>
+            <span class="option-title">Middle Eastern</span>
           </label>
           <label class="option-card">
             <input class="visually-hidden-input" type="checkbox" id="cuisine-all" value="all">
@@ -1221,7 +1256,7 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     addExercises.forEach(function (extra) { if (exercises.indexOf(extra) === -1) exercises.push(extra); });
     var hasConditionAdjustments = Object.keys(activeSwaps).length > 0;
 
-    var equipmentLabel = { gym: 'a full gym', freeWeights: 'free weights only', bodyweight: 'no equipment' }[equipmentTier];
+    var equipmentLabel = { gym: 'a full gym', freeWeights: 'free weights only', bodyweight: 'no equipment', band: 'a resistance band' }[equipmentTier];
     var rows = exercises.map(function (ex) {
       var row = computeQuickSessionRow(ex, intensity, equipmentTier);
       return '<tr><td>' + row.name + '</td><td class="num">' + row.setsReps + '</td><td class="num">' + row.weight + '</td></tr>';
@@ -1796,21 +1831,21 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
           breakfast: ['2 moong dal chillas with mint chutney', '150g paneer bhurji with sauteed vegetables', '1 cup Greek yogurt with 1 tbsp seeds and a few berries', '1 cup sprouts salad with 100g paneer'],
           lunch: ['150g grilled paneer or tofu salad with 1/2 cup quinoa', '150g paneer and vegetable stir-fry with 1/3 cup millet', '1 cup chana salad with 1 tbsp olive oil and lemon', '150g tofu and vegetable curry with 1 cup cauliflower rice'],
           dinner: ['150g palak paneer with 1 small millet roti', '150g grilled paneer with sauteed greens', '150g tofu and vegetable stir-fry', '150g paneer tikka with a side salad'],
-          snack: ['1/4 cup roasted chana or 15g almonds', '1 cup cucumber with 1/2 cup hung curd dip', '15g walnuts', '100g paneer cubes with chaat masala']
+          snack: ['1/4 cup roasted chana or 15g almonds', '1 cup cucumber with 1/2 cup hung curd dip', '15g walnuts', '100g paneer cubes with chaat masala', '1 whey protein scoop with milk']
         }
       },
       nonVegetarian: {
         balanced: {
           breakfast: ['3 boiled eggs with 1 slice whole-wheat toast and 1/4 avocado', '2-egg vegetable omelette with 1 slice toast', '2 chicken sausages with sauteed vegetables and 1 slice toast', '2-egg bhurji with 1 paratha'],
           lunch: ['150g grilled chicken or fish, 1 cup brown rice, sauteed vegetables', '150g chicken curry with 1 cup rice and side salad', '150g fish curry with 1 cup rice and side vegetables', '150g chicken biryani (1.5 cups) with 1/2 cup raita'],
-          dinner: ['150g fish or chicken curry with 2 rotis and side salad', '150g grilled fish with steamed vegetables and 1/2 cup rice', '150g chicken stir-fry with 1 cup noodles or rice', '150g light butter chicken with 2 rotis'],
-          snack: ['1 cup Greek yogurt with berries', '2 boiled eggs', '1/2 cup roasted chickpeas', '15g nuts and 1 piece of fruit']
+          dinner: ['150g fish or chicken curry with 2 rotis and 1/2 cup curd', '150g grilled fish with steamed vegetables and 1/2 cup rice', '150g chicken stir-fry with 1 cup noodles or rice', '150g light butter chicken with 2 rotis and 1/2 cup raita'],
+          snack: ['1 cup Greek yogurt with berries', '2 boiled eggs', '1/2 cup roasted chickpeas', '15g nuts and 1 piece of fruit', '1 whey protein scoop with milk']
         },
         lowCarb: {
           breakfast: ['3-egg bhurji with sauteed vegetables', '2-egg omelette with spinach and 30g cheese', '150g grilled chicken strips with vegetables', '3 boiled eggs with 1/4 avocado'],
           lunch: ['150g grilled chicken or fish with a large salad', '150g chicken tikka with sauteed vegetables', '150g fish with steamed broccoli and 1 cup cauliflower rice', '2-egg salad with olive oil dressing'],
-          dinner: ['150g baked fish or chicken with steamed vegetables', '150g grilled chicken with sauteed greens', '150g light fish curry with vegetables', '150g chicken stir-fry with vegetables, no rice'],
-          snack: ['2 boiled eggs or 15g nuts', '100g grilled chicken strips', '1 cup unsweetened Greek yogurt', '30g cheese cubes with cucumber']
+          dinner: ['150g baked fish or chicken with steamed vegetables and 1 cup curd', '150g grilled chicken with sauteed greens and 1 cup curd', '150g light fish curry with vegetables', '150g chicken stir-fry with vegetables, no rice'],
+          snack: ['2 boiled eggs or 15g nuts', '100g grilled chicken strips', '1 cup unsweetened Greek yogurt', '30g cheese cubes with cucumber', '1 whey protein scoop with water or milk']
         }
       },
       vegan: {
@@ -1916,47 +1951,311 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
         }
       }
     },
-    asian: {
+    chinese: {
       vegetarian: {
         balanced: {
-          breakfast: ['1 cup vegetable congee with 1 soft-boiled egg', '2 vegetable steamed buns with soy dipping sauce'],
-          lunch: ['1.5 cups vegetable fried rice with 100g tofu', '1 cup vegetable pad thai (rice noodles) with tofu'],
-          dinner: ['150g tofu and vegetable stir-fry with 1 cup steamed rice', '1.5 cups mushroom and vegetable noodle soup'],
-          snack: ['1 cup edamame with sea salt', '1 piece of fruit with 15g cashews']
+          breakfast: ['1 cup vegetable congee with 1 soft-boiled egg', '2 vegetable steamed buns with soy dipping sauce', '1 cup vegetable fried rice with 1 egg'],
+          lunch: ['1.5 cups vegetable fried rice with 100g tofu', '1 serving mapo eggplant with 1 cup rice', '1 cup vegetable and egg drop soup with 1 cup rice'],
+          dinner: ['150g tofu and vegetable stir-fry with 1 cup steamed rice', '1.5 cups mushroom and vegetable noodle soup', '1 serving mapo tofu with 1 cup rice'],
+          snack: ['1 cup edamame with sea salt', '1 piece of fruit with 15g cashews', '30g roasted peanuts']
         },
         lowCarb: {
-          breakfast: ['150g tofu scramble with scallions and soy sauce', '1 cup miso soup with 100g tofu and vegetables'],
-          lunch: ['150g tofu and vegetable stir-fry, no rice', '1 cup egg and vegetable drop soup with 100g tofu'],
-          dinner: ['150g grilled tofu with sauteed bok choy', '1.5 cups vegetable stir-fry with cauliflower rice'],
-          snack: ['1 cup edamame', '15g roasted cashews']
+          breakfast: ['150g tofu scramble with scallions and soy sauce', '1 cup miso soup with 100g tofu and vegetables', '2 eggs with bok choy and soy sauce'],
+          lunch: ['150g tofu and vegetable stir-fry, no rice', '1 cup egg and vegetable drop soup with 100g tofu', '1 serving mapo tofu, no rice'],
+          dinner: ['150g grilled tofu with sauteed bok choy', '1.5 cups vegetable stir-fry with cauliflower rice', '1 serving mapo eggplant, no rice'],
+          snack: ['1 cup edamame', '15g roasted cashews', '1/2 cup edamame with sea salt']
         }
       },
       nonVegetarian: {
         balanced: {
-          breakfast: ['1 cup congee with 100g shredded chicken', '2 soft-boiled eggs with 1/2 cup steamed rice'],
-          lunch: ['150g chicken fried rice (1.5 cups)', '150g chicken pad thai with rice noodles'],
-          dinner: ['150g teriyaki chicken or fish with 1 cup steamed rice', '150g Thai green curry chicken with 1 cup rice'],
-          snack: ['1 cup edamame with sea salt', '100g chicken satay skewers']
+          breakfast: ['1 cup congee with 100g shredded chicken', '2 soft-boiled eggs with 1/2 cup steamed rice', '1 cup vegetable fried rice with 100g chicken'],
+          lunch: ['150g chicken fried rice (1.5 cups)', '150g kung pao chicken with 1 cup rice', '150g chicken and broccoli with 1 cup rice'],
+          dinner: ['150g kung pao chicken with 1 cup rice', '1 serving dan dan noodles with 100g pork', '150g chicken and broccoli with 1 cup rice'],
+          snack: ['1 cup edamame with sea salt', '100g chicken satay skewers', '2 boiled eggs with soy sauce']
         },
         lowCarb: {
-          breakfast: ['2-egg omelette with scallions and soy sauce', '150g grilled chicken with a soft-boiled egg'],
-          lunch: ['150g grilled chicken or fish with stir-fried vegetables, no rice', '1.5 cups Vietnamese-style chicken salad, no noodles'],
-          dinner: ['150g steamed fish with ginger and scallion, side vegetables', '150g chicken stir-fry with cauliflower rice'],
-          snack: ['100g chicken satay skewers', '1 cup edamame']
+          breakfast: ['2-egg omelette with scallions and soy sauce', '150g grilled chicken with a soft-boiled egg', '3 eggs with bok choy'],
+          lunch: ['150g grilled chicken or fish with stir-fried vegetables, no rice', '150g chicken and broccoli, no rice', '150g kung pao chicken, no rice'],
+          dinner: ['150g steamed fish with ginger and scallion, side vegetables', '150g chicken stir-fry with cauliflower rice', '150g chicken and broccoli, no rice'],
+          snack: ['100g chicken satay skewers', '1 cup edamame', '2 boiled eggs with soy sauce']
         }
       },
       vegan: {
         balanced: {
-          breakfast: ['1 cup congee with vegetables', '2 vegetable spring rolls with soy dipping sauce'],
-          lunch: ['1.5 cups vegetable fried rice with tofu', '1 cup vegetable pad thai with tofu, no egg'],
-          dinner: ['150g tofu and vegetable curry with 1 cup rice', '1.5 cups vegetable noodle stir-fry'],
-          snack: ['1 cup edamame', '15g roasted peanuts']
+          breakfast: ['1 cup congee with vegetables', '2 vegetable spring rolls with soy dipping sauce', '1 scallion pancake with soy dipping sauce', '150g tofu bhurji-style scramble with scallions'],
+          lunch: ['1.5 cups vegetable fried rice with tofu', '1 serving mapo tofu (vegan) with 1 cup rice', '1 cup vegetable and chickpea stir-fry with 1 cup rice', '1 serving mapo eggplant (vegan) with 1 cup rice'],
+          dinner: ['150g tofu and vegetable curry with 1 cup rice', '1.5 cups vegetable noodle stir-fry', '1 serving mapo tofu (vegan) with 1 cup rice', '150g tempeh stir-fry with 1 cup rice'],
+          snack: ['1 cup edamame', '15g roasted peanuts', '30g roasted chickpeas with sesame oil', '1 cup asian-spiced roasted chickpeas']
         },
         lowCarb: {
-          breakfast: ['150g tofu scramble with scallions', '1 cup miso soup with tofu and seaweed'],
-          lunch: ['150g tofu and vegetable stir-fry, no rice', '1.5 cups tofu and vegetable soup'],
-          dinner: ['150g grilled tofu with sauteed greens', '1.5 cups vegetable stir-fry with cauliflower rice'],
-          snack: ['1 cup edamame', '15g roasted peanuts']
+          breakfast: ['150g tofu scramble with scallions', '1 cup miso soup with tofu and seaweed', '150g tofu bhurji-style scramble, no rice', '1 cup sauteed bok choy with 100g tofu'],
+          lunch: ['150g tofu and vegetable stir-fry, no rice', '1.5 cups tofu and vegetable soup', '1 serving mapo tofu (vegan), no rice', '1 cup bok choy and tofu stir-fry, no rice'],
+          dinner: ['150g grilled tofu with sauteed greens', '1.5 cups vegetable stir-fry with cauliflower rice', '1 serving mapo tofu (vegan), no rice', '150g tempeh with sauteed bok choy'],
+          snack: ['1 cup edamame', '15g roasted peanuts', '30g roasted chickpeas with sesame oil', '1/2 cup edamame with sea salt']
+        }
+      }
+    },
+    japanese: {
+      vegetarian: {
+        balanced: {
+          breakfast: ['1 serving tamagoyaki with 1 cup steamed rice', '1 cup rice with 1 egg and soy sauce', '1 cup miso soup with 100g tofu and 1 cup rice'],
+          lunch: ['1 serving vegetable ramen', '2 onigiri with a side of edamame', '1 serving agedashi tofu with 1 cup rice'],
+          dinner: ['1 serving vegetable gyoza with 1 cup rice', '1 serving yakisoba with vegetables', '1 serving japanese curry with rice'],
+          snack: ['1 cup edamame with sea salt', '2 onigiri', '1 cup miso soup']
+        },
+        lowCarb: {
+          breakfast: ['1 serving tamagoyaki, no rice', '150g tofu scramble with scallions', '1 cup miso soup with 100g tofu'],
+          lunch: ['1 serving agedashi tofu, no rice', '150g grilled tofu with sauteed greens', '1 large salad with 100g tofu and tahini dressing'],
+          dinner: ['1 serving agedashi tofu with sauteed vegetables', '150g grilled tofu with steamed bok choy', '1 cup miso soup with 150g tofu'],
+          snack: ['1 cup edamame', '1 cup miso soup', '15g roasted cashews']
+        }
+      },
+      nonVegetarian: {
+        balanced: {
+          breakfast: ['1 serving tamagoyaki with 100g chicken and rice', '2 eggs with 100g grilled chicken and rice', '1 cup miso soup with 100g chicken and rice'],
+          lunch: ['150g chicken teriyaki with 1 cup rice', '150g teriyaki salmon with 1 cup rice', '1 serving yakisoba with 100g chicken'],
+          dinner: ['150g teriyaki salmon with 1 cup rice and steamed vegetables', '150g chicken teriyaki with 1 cup rice', '1 serving japanese curry with 100g chicken and rice'],
+          snack: ['2 boiled eggs with soy sauce', '100g grilled chicken strips', '1 cup edamame with sea salt']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with 100g grilled chicken, no rice', '150g chicken teriyaki, no rice', '3 eggs with scallions and soy sauce'],
+          lunch: ['150g teriyaki salmon with steamed vegetables, no rice', '150g chicken teriyaki with sauteed greens, no rice', '150g grilled fish with bok choy'],
+          dinner: ['150g teriyaki salmon with steamed vegetables, no rice', '150g chicken teriyaki with sauteed bok choy, no rice', '150g grilled fish with a side salad'],
+          snack: ['2 boiled eggs with soy sauce', '100g grilled chicken strips', '1 cup edamame']
+        }
+      },
+      vegan: {
+        balanced: {
+          breakfast: ['1 cup miso soup with 100g tofu and rice', '1 smoothie with plant milk and banana', '2 onigiri with a side of edamame'],
+          lunch: ['1 serving vegetable ramen', '1 serving vegetable gyoza with 1 cup rice', '1 cup vegetable yakisoba'],
+          dinner: ['1 serving vegetable gyoza with 1 cup rice', '1 serving japanese curry with rice', '150g fried tofu with 1 cup rice and steamed vegetables'],
+          snack: ['1 cup edamame with sea salt', '2 onigiri', '1 cup miso soup']
+        },
+        lowCarb: {
+          breakfast: ['150g tofu scramble with scallions', '1 cup miso soup with tofu', '1 cup sauteed spinach with 100g tofu'],
+          lunch: ['150g fried tofu with steamed vegetables, no rice', '1 large salad with 100g tofu and tahini dressing', '1 cup miso soup with 150g tofu'],
+          dinner: ['150g fried tofu with sauteed bok choy, no rice', '1 cup miso soup with 150g tofu', '150g grilled tofu with steamed vegetables'],
+          snack: ['1 cup edamame', '1 cup miso soup', '15g roasted peanuts']
+        }
+      }
+    },
+    thai: {
+      vegetarian: {
+        balanced: {
+          breakfast: ['1 cup rice with coconut milk and 1 piece of fruit', '1 cup rice porridge with vegetables', '2 eggs with rice and soy sauce'],
+          lunch: ['1 serving pad thai with tofu and rice noodles', '1 serving thai green curry with tofu and 1 cup rice', '1 cup pad see ew with tofu'],
+          dinner: ['1 serving thai green curry with tofu and 1 cup rice', '1 serving thai red curry with tofu and 1 cup rice', '1 serving pad kra pao with tofu, 1 cup rice, and an egg'],
+          snack: ['1 serving fresh spring rolls with tofu and peanut sauce', '1 cup thai cucumber salad', '15g roasted peanuts']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with vegetables, no rice', '150g grilled tofu with vegetables', '1 cup thai-style vegetable soup'],
+          lunch: ['1 serving thai green curry with tofu, no rice', '150g grilled tofu with thai cucumber salad', '1 large salad with tofu and peanut dressing'],
+          dinner: ['1 serving thai red curry with tofu, no rice', '150g grilled tofu with sauteed vegetables', '1 serving pad kra pao with tofu, no rice'],
+          snack: ['1 serving fresh spring rolls with tofu and peanut sauce', '1 cup thai cucumber salad', '15g roasted peanuts']
+        }
+      },
+      nonVegetarian: {
+        balanced: {
+          breakfast: ['2 eggs with rice and soy sauce', '150g grilled chicken with rice', '1 cup rice porridge with 100g chicken'],
+          lunch: ['1 serving pad thai with chicken and rice noodles', '1 serving thai green curry with chicken and 1 cup rice', '1 serving pad see ew with chicken'],
+          dinner: ['1 serving thai green curry with chicken and 1 cup rice', '1 serving thai red curry with chicken and 1 cup rice', '1 serving pad kra pao with chicken, an egg, and 1 cup rice'],
+          snack: ['1 cup tom yum soup', '100g grilled chicken satay', '1 cup thai cucumber salad with peanuts']
+        },
+        lowCarb: {
+          breakfast: ['150g grilled chicken with vegetables, no rice', '2 eggs with 100g chicken', '150g grilled chicken with thai cucumber salad'],
+          lunch: ['1 serving thai green curry with chicken, no rice', '150g grilled chicken with thai cucumber salad', '1 cup tom yum soup with 100g shrimp'],
+          dinner: ['1 serving thai red curry with chicken, no rice', '1 serving pad kra pao with chicken and an egg, no rice', '150g grilled chicken with sauteed vegetables'],
+          snack: ['1 cup tom yum soup', '100g grilled chicken satay', '1 cup thai cucumber salad with peanuts']
+        }
+      },
+      vegan: {
+        balanced: {
+          breakfast: ['1 cup rice with coconut milk and 1 piece of fruit', '1 smoothie with plant milk and banana', '1 cup rice porridge with vegetables'],
+          lunch: ['1 serving pad thai with tofu, no egg, with rice noodles', '1 serving thai green curry with tofu and 1 cup rice', '1 cup vegetable and tofu stir-fry with rice'],
+          dinner: ['1 serving thai green curry with tofu and 1 cup rice', '1 serving thai red curry with tofu and 1 cup rice', '1 serving pad kra pao with tofu, 1 cup rice, no egg'],
+          snack: ['1 serving fresh spring rolls with tofu and peanut sauce', '1 cup thai cucumber salad', '15g roasted peanuts']
+        },
+        lowCarb: {
+          breakfast: ['150g tofu scramble with vegetables', '1 cup sauteed vegetables with tofu', '1/2 avocado with lime'],
+          lunch: ['1 serving thai green curry with tofu, no rice', '150g grilled tofu with thai cucumber salad', '1 large salad with tofu and peanut dressing'],
+          dinner: ['1 serving thai red curry with tofu, no rice', '150g grilled tofu with sauteed vegetables', '1 serving pad kra pao with tofu, no rice, no egg'],
+          snack: ['1 serving fresh spring rolls with tofu and peanut sauce', '1 cup thai cucumber salad', '15g roasted peanuts']
+        }
+      }
+    },
+    italian: {
+      vegetarian: {
+        balanced: {
+          breakfast: ['1 cup oats with milk, banana, and honey', '2 eggs with 30g parmesan and 1 slice toast', '1 cup Greek yogurt with fruit and honey'],
+          lunch: ['1 cup caprese pasta salad with 100g mozzarella', '1 cup minestrone with 1 slice bread', '1 serving caprese salad with 100g mozzarella and 1 slice bread'],
+          dinner: ['1 serving pasta alla norma with 30g parmesan', '1 serving baked ziti with side salad', '1 serving mushroom risotto with 30g parmesan'],
+          snack: ['1 serving bruschetta', '1 serving caprese salad', '30g parmesan with grapes']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with 30g parmesan, no toast', '1 cup Greek yogurt with berries', '150g ricotta with tomatoes and basil'],
+          lunch: ['1 serving caprese salad with 100g mozzarella, no bread', '1 large salad with 100g mozzarella and olive oil', '1 cup minestrone, no pasta'],
+          dinner: ['150g grilled halloumi with a side salad', '1 large salad with 100g mozzarella and basil', '1 serving mushroom risotto (small serving), 30g parmesan'],
+          snack: ['1 serving caprese salad', '30g parmesan with cucumber', '15g walnuts']
+        }
+      },
+      nonVegetarian: {
+        balanced: {
+          breakfast: ['2 eggs with 100g chicken sausage and 1 slice toast', '1 cup oats with milk and fruit', '2 eggs with 30g parmesan and 1 slice toast'],
+          lunch: ['1 serving chicken parmesan with side salad', '1 cup minestrone with 100g chicken and 1 slice bread', '1 serving baked ziti with 100g chicken'],
+          dinner: ['1 serving chicken parmesan with 1 cup pasta', '150g grilled chicken with mushroom risotto', '1 serving chicken parmesan with side salad'],
+          snack: ['1 serving bruschetta', '100g grilled chicken strips with parmesan', '30g parmesan with grapes']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with 100g chicken sausage, no toast', '150g grilled chicken with 30g parmesan', '3 eggs with spinach and parmesan'],
+          lunch: ['1 serving chicken parmesan, no pasta, with side salad', '150g grilled chicken with caprese salad', '1 large salad with 150g chicken and parmesan'],
+          dinner: ['1 serving chicken parmesan, no pasta, with side salad', '150g grilled chicken with sauteed vegetables and parmesan', '150g grilled chicken with a caprese salad'],
+          snack: ['100g grilled chicken strips with parmesan', '30g parmesan with cucumber', '15g walnuts']
+        }
+      },
+      vegan: {
+        balanced: {
+          breakfast: ['1 cup oats with plant milk, banana, and maple syrup', '1 smoothie with plant milk, banana, and peanut butter', '1 cup oats with fruit and seeds'],
+          lunch: ['1 cup pasta with cannellini beans and vegetables', '1 cup minestrone with 1 slice bread', '1 cup pasta with olives, capers, and tomato sauce'],
+          dinner: ['1 cup pasta with cannellini beans and vegetables', '1 cup pasta with olives, capers, and tomato sauce', '1 serving baked ziti (vegan, dairy-free cheese) with side salad'],
+          snack: ['1 serving bruschetta, no cheese', '3 tbsp hummus with vegetable sticks', '15g walnuts']
+        },
+        lowCarb: {
+          breakfast: ['1 cup sauteed spinach with 100g tofu', '1 smoothie with plant milk and berries', '150g tofu scramble with tomatoes and basil'],
+          lunch: ['1 cup minestrone, extra vegetables, less pasta', '1 large salad with cannellini beans and olive oil', '150g grilled tofu with a side salad'],
+          dinner: ['1 cup cannellini beans with vegetables, less pasta', '150g grilled tofu with sauteed vegetables', '1 large salad with cannellini beans and olive oil'],
+          snack: ['3 tbsp hummus with vegetable sticks', '15g walnuts', '1/2 cup cannellini beans with olive oil and herbs']
+        }
+      }
+    },
+    korean: {
+      vegetarian: {
+        balanced: {
+          breakfast: ['1 serving gyeran bap', '1 cup steamed eggs with 1 cup rice', '2 eggs with 1 cup rice and soy sauce'],
+          lunch: ['1 serving bibimbap with an egg', '1 serving japchae with a side of kimchi', '1 cup rice with sauteed vegetables and a fried egg'],
+          dinner: ['1 serving bibimbap with an egg', '1 serving sundubu jjigae with 1 cup rice', '1 serving japchae with 1 cup rice'],
+          snack: ['1 serving pajeon with an egg', '1 cup kimchi with 1/2 cup rice', '15g roasted peanuts']
+        },
+        lowCarb: {
+          breakfast: ['1 cup steamed eggs, no rice', '2 eggs with kimchi, no rice', '150g tofu scramble with kimchi'],
+          lunch: ['1 serving sundubu jjigae, no rice', '150g grilled tofu with a side of kimchi', '1 large salad with 100g tofu and tahini dressing'],
+          dinner: ['1 serving sundubu jjigae, no rice', '150g grilled tofu with sauteed vegetables and kimchi', '1 cup kimchi with 150g tofu'],
+          snack: ['1 cup kimchi', '15g roasted peanuts', '1 cup edamame']
+        }
+      },
+      nonVegetarian: {
+        balanced: {
+          breakfast: ['1 serving gyeran bap with 100g chicken', '2 eggs with 100g chicken and rice', '1 cup rice with kimchi and a fried egg'],
+          lunch: ['1 serving bibimbap with 150g beef', '1 serving japchae with 100g beef and a side of kimchi', '1 serving kimchi jjigae with 100g pork and 1 cup rice'],
+          dinner: ['1 serving bibimbap with 150g beef', '1 serving kimchi jjigae with 100g pork and 1 cup rice', '1 serving japchae with 100g beef and 1 cup rice'],
+          snack: ['1 serving pajeon with seafood', '100g grilled chicken with kimchi', '2 boiled eggs with kimchi']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with 100g chicken and kimchi, no rice', '150g grilled chicken with kimchi', '3 eggs with kimchi'],
+          lunch: ['1 serving kimchi jjigae with 100g pork, no rice', '150g grilled chicken or beef with kimchi', '1 large salad with 150g beef and tahini dressing'],
+          dinner: ['1 serving kimchi jjigae with 100g pork, no rice', '150g grilled beef with sauteed vegetables and kimchi', '150g grilled chicken with kimchi, no rice'],
+          snack: ['100g grilled chicken with kimchi', '2 boiled eggs with kimchi', '1 cup edamame']
+        }
+      },
+      vegan: {
+        balanced: {
+          breakfast: ['1 cup rice with sauteed vegetables and kimchi', '1 smoothie with plant milk and banana', '1 cup oats with fruit'],
+          lunch: ['1 serving bibimbap with tofu, no egg', '1 serving japchae with tofu and a side of kimchi', '1 cup rice with sauteed vegetables and tofu'],
+          dinner: ['1 serving bibimbap with tofu, no egg', '1 serving sundubu jjigae (vegan) with 1 cup rice', '1 serving japchae with tofu and 1 cup rice'],
+          snack: ['1 serving pajeon, no egg or seafood', '1 cup kimchi with 1/2 cup rice', '15g roasted peanuts']
+        },
+        lowCarb: {
+          breakfast: ['150g tofu scramble with kimchi', '1 cup sauteed vegetables with tofu', '1/2 cup kimchi with 100g tofu'],
+          lunch: ['1 serving sundubu jjigae (vegan), no rice', '150g grilled tofu with kimchi', '1 large salad with tofu and tahini dressing'],
+          dinner: ['1 serving sundubu jjigae (vegan), no rice', '150g grilled tofu with sauteed vegetables and kimchi', '1 cup kimchi with 150g tofu'],
+          snack: ['1 cup kimchi', '15g roasted peanuts', '1 cup edamame']
+        }
+      }
+    },
+    mexican: {
+      vegetarian: {
+        balanced: {
+          breakfast: ['1 serving huevos rancheros', '1 serving chilaquiles with 30g cheddar', '2 eggs with 1 corn tortilla and 1/4 avocado', '1 cup refried beans with 2 corn tortillas and 30g cheddar'],
+          lunch: ['1 cheese quesadilla with 1 cup black beans and side salad', '1 cup Mexican quinoa stew with 1/4 avocado', '1 vegetarian burrito with beans, rice, and cheese', '1 cup esquites with 2 corn tortillas'],
+          dinner: ['2 vegetarian tacos with black beans and 30g cheddar, side salad', '1 cup roasted vegetable enchilada casserole with 30g cheddar', '1 cup Mexican quinoa stew with 1 corn tortilla', '1 cheese quesadilla with 1 cup Mexican rice'],
+          snack: ['1 cup esquites', '1/2 avocado with lime and salt', '3 tbsp hummus with bell pepper strips', '1/2 cup black beans with salsa']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with salsa and 1/4 avocado, no tortilla', '1 cup Mexican-style scrambled eggs with 30g cheddar and salsa', '150g grilled halloumi with salsa and avocado', '2 eggs with 1/2 cup black beans and salsa, no tortilla'],
+          lunch: ['1 cup black bean and cheese salad with salsa, no rice', '150g grilled tofu with salsa and avocado', '1 cup esquites, no tortilla', '1 large salad with 1/2 cup black beans, 30g cheddar, and avocado'],
+          dinner: ['2 lettuce-wrapped tacos with black beans and cheddar', '150g grilled halloumi with sauteed vegetables and salsa', '1 cup black bean and vegetable stew, no rice', '150g grilled tofu with esquites'],
+          snack: ['1/2 avocado with lime and salt', '30g cheddar cubes with salsa', '1/4 cup black beans with salsa', '15g pumpkin seeds']
+        }
+      },
+      nonVegetarian: {
+        balanced: {
+          breakfast: ['1 serving huevos rancheros with 100g chicken', '2 eggs with 100g chicken and 1 corn tortilla', '1 serving chilaquiles with 2 eggs', '150g scrambled eggs with chicken sausage and salsa'],
+          lunch: ['150g chicken tinga with 2 corn tortillas and side salad', '1 chicken burrito with rice and black beans', '150g carne asada with 2 corn tortillas and salsa', '1 cup chicken and rice bowl with black beans and salsa'],
+          dinner: ['2 chicken tacos with salsa and side salad', '150g carne asada with 2 corn tortillas and salsa', '150g chicken tinga with 1 cup Mexican rice', '1 chicken burrito bowl with black beans and cheddar'],
+          snack: ['100g grilled chicken strips with salsa', '2 boiled eggs with salsa', '1/2 cup black beans with 30g cheddar', '15g pumpkin seeds']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with 100g chicken and salsa, no tortilla', '150g scrambled eggs with chicken and avocado', '100g carne asada with 1/4 avocado', '3 eggs with salsa, no tortilla'],
+          lunch: ['150g chicken tinga with a large salad, no tortilla', '150g carne asada with esquites, no tortilla', '150g grilled chicken with black beans and salsa', '1 large salad with 150g chicken and avocado'],
+          dinner: ['150g chicken tinga with sauteed vegetables, no tortilla', '150g carne asada with a side salad', '150g grilled chicken with esquites, no tortilla', '150g grilled chicken with peppers and onions, no tortilla'],
+          snack: ['100g grilled chicken strips', '2 boiled eggs with salsa', '30g cheddar cubes', '1/2 avocado with lime']
+        }
+      },
+      vegan: {
+        balanced: {
+          breakfast: ['1 cup black beans with 2 corn tortillas and salsa', '1 smoothie with plant milk, banana, and peanut butter', '1 cup refried beans with 2 corn tortillas', '1/2 avocado with black beans and salsa'],
+          lunch: ['1 serving vegan chili with 1 cup rice', '1 cup Mexican quinoa stew with 1/4 avocado', '1 bean burrito with rice and salsa', '1 cup esquites (no cheese) with black beans'],
+          dinner: ['2 black bean tacos with salsa and avocado, side salad', '1 serving vegan chili with 1 corn tortilla', '1 cup Mexican quinoa stew with black beans', '1 bean burrito bowl with rice and salsa'],
+          snack: ['1/2 avocado with lime and salt', '1/2 cup black beans with salsa', '3 tbsp hummus with vegetable sticks', '15g pumpkin seeds']
+        },
+        lowCarb: {
+          breakfast: ['1 cup black beans with salsa and 1/4 avocado, no tortilla', '150g tofu scramble with salsa', '1 cup black bean and vegetable salad with lime', '1/2 avocado with 1/2 cup black beans and salsa'],
+          lunch: ['150g tofu and vegetable stir-fry with salsa, no rice', '1 cup black bean and vegetable salad with lime dressing', '1 large salad with black beans and avocado', '150g grilled tofu with esquites (no cheese)'],
+          dinner: ['1 cup black bean and vegetable stew, no rice', '150g tofu with sauteed vegetables and salsa', '2 lettuce-wrapped black bean tacos with avocado', '150g tofu with peppers and onions, no tortilla'],
+          snack: ['1/2 avocado with lime and salt', '1/4 cup black beans with salsa', '15g pumpkin seeds', '1/2 cup edamame with chili and lime']
+        }
+      }
+    },
+    middleEastern: {
+      vegetarian: {
+        balanced: {
+          breakfast: ['1 serving shakshuka with 1 slice pita bread', '2 eggs with 1/4 cup hummus and 1 slice pita bread', '1 serving ful medames with 2 eggs', '1 cup Greek yogurt with 1 tbsp tahini and fruit'],
+          lunch: ['1 falafel wrap with hummus and salad', '1 cup vegetable tagine with 1/2 cup couscous', '1 large Greek-style salad with 50g feta and 8 olives', '3 tbsp hummus with 1 slice pita bread and vegetable sticks'],
+          dinner: ['1 cup vegetable tagine with 1/2 cup couscous and side salad', '150g grilled halloumi with 1 cup tabbouleh and pita', '1 serving falafel with hummus and salad', '1 cup vegetable tagine with 1 slice pita bread'],
+          snack: ['3 tbsp muhammara with vegetable sticks', '3 tbsp hummus with cucumber', '1/4 cup roasted chickpeas with za\'atar', '15g almonds']
+        },
+        lowCarb: {
+          breakfast: ['1 serving shakshuka, no bread', '2 eggs with 1/4 cup hummus, no bread', '150g grilled halloumi with tomato and cucumber', '1 cup Greek yogurt with 1 tbsp tahini'],
+          lunch: ['150g grilled halloumi with a large Mediterranean salad', '1 large Greek-style salad with 50g feta and 8 olives', '3 tbsp hummus with vegetable sticks, no pita', '1 cup tabbouleh with 100g feta'],
+          dinner: ['150g grilled halloumi with sauteed greens', '1 cup vegetable tagine, no couscous', '150g grilled paneer or tofu with tahini dressing and salad', '1 large salad with 100g feta and olive oil'],
+          snack: ['3 tbsp muhammara with cucumber', '30g feta with 8 olives', '3 tbsp hummus with celery sticks', '15g walnuts']
+        }
+      },
+      nonVegetarian: {
+        balanced: {
+          breakfast: ['2 eggs with 100g chicken and 1 slice pita bread', '1 serving shakshuka with 1 slice pita bread', '150g chicken shawarma with pita and hummus', '2 eggs with 1/4 cup hummus and pita bread'],
+          lunch: ['150g chicken shawarma with pita, hummus, and salad', '150g chicken kofta with 1/2 cup couscous', '150g grilled chicken with 1 cup tabbouleh and pita', '1 cup chicken and vegetable tagine with 1/2 cup couscous'],
+          dinner: ['150g chicken shawarma with pita bread and salad', '150g chicken kofta with 1/2 cup couscous and side salad', '150g grilled chicken with tahini sauce and vegetables', '1 cup chicken and vegetable tagine with 1 cup rice'],
+          snack: ['100g grilled chicken strips with tahini dip', '2 boiled eggs with za\'atar', '3 tbsp hummus with vegetable sticks', '15g almonds']
+        },
+        lowCarb: {
+          breakfast: ['2 eggs with 100g chicken, no bread', '150g scrambled eggs with chicken and vegetables', '100g chicken shawarma with salad, no pita', '3 eggs with 1/4 cup hummus, no bread'],
+          lunch: ['150g chicken shawarma with a large salad, no pita', '150g chicken kofta with sauteed vegetables', '150g grilled chicken with tahini dressing and salad', '150g grilled chicken with tabbouleh, no pita'],
+          dinner: ['150g chicken shawarma with sauteed greens, no pita', '150g chicken kofta with a side salad', '150g grilled chicken with tahini sauce and vegetables', '150g grilled chicken with a Mediterranean salad'],
+          snack: ['100g grilled chicken strips', '2 boiled eggs with za\'atar', '30g feta with cucumber', '15g walnuts']
+        }
+      },
+      vegan: {
+        balanced: {
+          breakfast: ['1 serving ful medames with 1 slice pita bread', '3 tbsp hummus with 1 slice pita bread', '1 cup oats with 1 tbsp tahini and fruit', '1 smoothie with plant milk, banana, and tahini'],
+          lunch: ['1 falafel wrap with hummus and salad', '1 cup vegetable tagine with 1/2 cup couscous', '3 tbsp hummus with 1 slice pita bread and vegetable sticks', '1 cup lentil and vegetable stew with 1/2 cup couscous'],
+          dinner: ['1 cup vegetable tagine with 1/2 cup couscous', '1 serving falafel with hummus and salad', '1 cup lentil and vegetable stew with pita bread', '3 tbsp muhammara with 1 cup roasted vegetables'],
+          snack: ['3 tbsp muhammara with vegetable sticks', '3 tbsp hummus with cucumber', '1/4 cup roasted chickpeas with za\'atar', '15g almonds']
+        },
+        lowCarb: {
+          breakfast: ['1 serving ful medames, no bread', '3 tbsp hummus with cucumber, no bread', '1 cup sauteed spinach with tahini dressing', '150g tofu scramble with za\'atar'],
+          lunch: ['1 cup lentil and vegetable salad with tahini dressing, no couscous', '3 tbsp hummus with vegetable sticks, no pita', '150g grilled tofu with 1 cup tabbouleh', '1 cup roasted vegetables with tahini sauce'],
+          dinner: ['1 cup vegetable tagine, no couscous', '150g grilled tofu with tahini sauce and vegetables', '1 cup lentil and vegetable stew, no bread', '1 cup roasted vegetables with 3 tbsp muhammara'],
+          snack: ['3 tbsp muhammara with cucumber', '3 tbsp hummus with celery sticks', '1/4 cup roasted chickpeas with za\'atar', '15g walnuts']
         }
       }
     }
@@ -1967,19 +2266,21 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
   // Standard per-100g values (close to widely published USDA-style figures). unitG is used for
   // items more naturally counted than weighed (e.g. "2 eggs" rather than "100g egg").
   var ingredientDB = [
-    { name: "chicken breast", category: "protein", kcal: 165, protein: 31, carb: 0, fat: 3.6 },
-    { name: "chicken thigh", category: "protein", kcal: 209, protein: 26, carb: 0, fat: 10.9 },
+    { name: "chicken breast", category: "protein", kcal: 165, protein: 31, carb: 0, fat: 3.6, maxServeG: 250 },
+    { name: "chicken thigh", category: "protein", kcal: 209, protein: 26, carb: 0, fat: 10.9, maxServeG: 250 },
     { name: "egg", category: "protein", kcal: 155, protein: 13, carb: 1.1, fat: 11, unitG: 50, maxServeG: 200 },
     { name: "paneer", category: "protein", kcal: 265, protein: 18, carb: 1.2, fat: 20, maxServeG: 180 },
-    { name: "tofu", category: "protein", kcal: 144, protein: 15, carb: 3, fat: 8 },
-    { name: "tempeh", category: "protein", kcal: 192, protein: 20, carb: 8, fat: 11 },
+    { name: "tofu", category: "protein", kcal: 144, protein: 15, carb: 3, fat: 8, maxServeG: 300 },
+    { name: "tempeh", category: "protein", kcal: 192, protein: 20, carb: 8, fat: 11, maxServeG: 250 },
     { name: "greek yogurt", category: "protein", kcal: 59, protein: 10, carb: 3.6, fat: 0.4 },
     { name: "yogurt", category: "protein", kcal: 61, protein: 3.5, carb: 4.7, fat: 3.3 },
+    { name: "curd", category: "protein", kcal: 61, protein: 3.5, carb: 4.7, fat: 3.3 },
+    { name: "raita", category: "protein", kcal: 75, protein: 3, carb: 5, fat: 4.5 },
     { name: "salmon", category: "protein", kcal: 208, protein: 20, carb: 0, fat: 13, maxServeG: 220 },
-    { name: "fish", category: "protein", kcal: 128, protein: 26, carb: 0, fat: 2.7 },
-    { name: "shrimp", category: "protein", kcal: 99, protein: 24, carb: 0.2, fat: 0.3 },
+    { name: "fish", category: "protein", kcal: 128, protein: 26, carb: 0, fat: 2.7, maxServeG: 250 },
+    { name: "shrimp", category: "protein", kcal: 99, protein: 24, carb: 0.2, fat: 0.3, maxServeG: 250 },
     { name: "beef", category: "protein", kcal: 250, protein: 26, carb: 0, fat: 15, maxServeG: 220 },
-    { name: "turkey", category: "protein", kcal: 135, protein: 29, carb: 0, fat: 1 },
+    { name: "turkey", category: "protein", kcal: 135, protein: 29, carb: 0, fat: 1, maxServeG: 250 },
     { name: "rice", category: "carb", kcal: 130, protein: 2.7, carb: 28, fat: 0.3 },
     { name: "brown rice", category: "carb", kcal: 123, protein: 2.7, carb: 25.6, fat: 1 },
     { name: "roti", category: "carb", kcal: 297, protein: 11, carb: 60, fat: 3.7, unitG: 40 },
@@ -2146,7 +2447,7 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     { name: "sheep", category: "protein_fat", kcal: 161, protein: 19.2, carb: 0, fat: 9.4 },
     { name: "calf", category: "protein_fat", kcal: 141, protein: 21.5, carb: 0, fat: 6.1 },
     { name: "mithun", category: "protein_fat", kcal: 140, protein: 19, carb: 0, fat: 7.1 },
-    { name: "pork", category: "protein_fat", kcal: 219, protein: 18.6, carb: 0, fat: 16.2 },
+    { name: "pork", category: "protein_fat", kcal: 219, protein: 18.6, carb: 0, fat: 16.2, maxServeG: 220 },
     { name: "hare", category: "protein_fat", kcal: 124, protein: 20.8, carb: 0, fat: 4.4 },
     { name: "rabbit", category: "protein_fat", kcal: 142, protein: 21.3, carb: 0, fat: 6.3 },
     { name: "allathi", category: "protein", kcal: 97, protein: 21.8, carb: 0, fat: 1 },
@@ -2970,17 +3271,56 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     { name: 'poached egg', category: 'protein', kcal: 150, protein: 13, carb: 1, fat: 10, unitG: 50, maxServeG: 200 },
     { name: 'fried egg', category: 'protein_fat', kcal: 196, protein: 13.6, carb: 1, fat: 15, unitG: 60, maxServeG: 220 },
     { name: 'scrambled egg', category: 'protein_fat', kcal: 149, protein: 10, carb: 1.6, fat: 11.4, unitG: 60, maxServeG: 220 },
-    { name: 'grilled chicken breast', category: 'protein', kcal: 165, protein: 31, carb: 0, fat: 3.6 },
-    { name: 'boiled chicken breast', category: 'protein', kcal: 150, protein: 29, carb: 0, fat: 3 },
-    { name: 'fried chicken breast', category: 'protein', kcal: 200, protein: 29, carb: 0, fat: 9 },
-    { name: 'fried chicken', category: 'protein_carb', kcal: 280, protein: 22, carb: 14, fat: 16 },
+    { name: 'grilled chicken breast', category: 'protein', kcal: 165, protein: 31, carb: 0, fat: 3.6, maxServeG: 250 },
+    { name: 'boiled chicken breast', category: 'protein', kcal: 150, protein: 29, carb: 0, fat: 3, maxServeG: 250 },
+    { name: 'fried chicken breast', category: 'protein', kcal: 200, protein: 29, carb: 0, fat: 9, maxServeG: 250 },
+    { name: 'fried chicken', category: 'protein_carb', kcal: 280, protein: 22, carb: 14, fat: 16, maxServeG: 250 },
     { name: 'baked potato', category: 'carb', kcal: 93, protein: 2.5, carb: 21, fat: 0.2, unitG: 170 },
     { name: 'fried potato', category: 'carb', kcal: 312, protein: 3.5, carb: 41, fat: 15 },
     { name: 'mashed potato', category: 'carb', kcal: 113, protein: 2, carb: 17, fat: 4.3 },
-    { name: 'grilled fish', category: 'protein', kcal: 128, protein: 26, carb: 0, fat: 2.7 },
-    { name: 'fried fish', category: 'protein_carb', kcal: 230, protein: 16, carb: 8, fat: 15 },
+    { name: 'grilled fish', category: 'protein', kcal: 128, protein: 26, carb: 0, fat: 2.7, maxServeG: 250 },
+    { name: 'fried fish', category: 'protein_carb', kcal: 230, protein: 16, carb: 8, fat: 15, maxServeG: 250 },
     { name: 'fried paneer', category: 'protein_fat', kcal: 340, protein: 18, carb: 4, fat: 28, maxServeG: 180 },
-    { name: 'fried tofu', category: 'protein_fat', kcal: 271, protein: 21, carb: 10, fat: 17 }
+    { name: 'fried tofu', category: 'protein_fat', kcal: 271, protein: 21, carb: 10, fat: 17 },
+    { name: 'corn tortilla', category: 'carb', kcal: 218, protein: 5.7, carb: 45, fat: 2.8, unitG: 26 },
+    { name: 'flour tortilla', category: 'carb', kcal: 310, protein: 8, carb: 51, fat: 8, unitG: 45 },
+    { name: 'salsa', category: 'veg', kcal: 36, protein: 1.5, carb: 7, fat: 0.3 },
+    { name: 'salsa verde', category: 'veg', kcal: 30, protein: 1, carb: 5, fat: 0.8 },
+    { name: 'cheddar', category: 'protein_fat', kcal: 403, protein: 23, carb: 1.3, fat: 33 },
+    { name: 'scallion', category: 'veg', kcal: 32, protein: 1.8, carb: 7.3, fat: 0.2 },
+    { name: 'jalapeno', category: 'veg', kcal: 29, protein: 0.9, carb: 6.5, fat: 0.4 },
+    { name: 'soy sauce', category: 'carb', kcal: 53, protein: 8, carb: 4.9, fat: 0.6, unitG: 16 },
+    { name: 'sesame oil', category: 'fat', kcal: 884, protein: 0, carb: 0, fat: 100, unitG: 14 },
+    { name: 'mirin', category: 'carb', kcal: 230, protein: 0, carb: 53, fat: 0, unitG: 15 },
+    { name: 'cotija', category: 'protein_fat', kcal: 350, protein: 21, carb: 3, fat: 28 },
+    { name: 'tzatziki', category: 'protein_fat', kcal: 90, protein: 3.5, carb: 4, fat: 6.5 },
+    { name: "za'atar", category: 'fat', kcal: 400, protein: 10, carb: 30, fat: 25 },
+    { name: 'pomegranate molasses', category: 'carb', kcal: 260, protein: 0.5, carb: 65, fat: 0 },
+    { name: 'bok choy', category: 'veg', kcal: 13, protein: 1.5, carb: 2.2, fat: 0.2 },
+    { name: 'feta', category: 'protein_fat', kcal: 264, protein: 14, carb: 4, fat: 21 },
+    { name: 'tabbouleh', category: 'carb', kcal: 120, protein: 3, carb: 15, fat: 6 },
+    { name: 'gyoza wrapper', category: 'carb', kcal: 275, protein: 8, carb: 55, fat: 2, unitG: 6 },
+    { name: 'rice paper', category: 'carb', kcal: 336, protein: 0.4, carb: 83, fat: 0.2, unitG: 8 },
+    { name: 'rice vermicelli', category: 'carb', kcal: 192, protein: 1.8, carb: 44, fat: 0.3 },
+    { name: 'egg noodles', category: 'carb', kcal: 138, protein: 4.5, carb: 25, fat: 2.1 },
+    { name: 'mint', category: 'veg', kcal: 44, protein: 3.3, carb: 8.4, fat: 0.7 },
+    { name: 'breadcrumbs', category: 'carb', kcal: 395, protein: 13, carb: 72, fat: 5.3 },
+    { name: 'fish sauce', category: 'carb', kcal: 35, protein: 5, carb: 3.6, fat: 0, unitG: 6 },
+    { name: 'palm sugar', category: 'carb', kcal: 380, protein: 0, carb: 98, fat: 0 },
+    { name: 'kimchi', category: 'veg', kcal: 15, protein: 1.1, carb: 2.4, fat: 0.5 },
+    { name: 'gochujang', category: 'carb', kcal: 250, protein: 6, carb: 44, fat: 3, unitG: 15 },
+    { name: 'ricotta', category: 'protein_fat', kcal: 174, protein: 11, carb: 3, fat: 13 },
+    { name: 'mozzarella', category: 'protein_fat', kcal: 280, protein: 22, carb: 2.2, fat: 21 },
+    { name: 'parmesan', category: 'protein_fat', kcal: 431, protein: 38, carb: 4, fat: 29, unitG: 10 },
+    { name: 'marinara sauce', category: 'veg', kcal: 40, protein: 1.4, carb: 7, fat: 1 },
+    { name: 'balsamic vinegar', category: 'carb', kcal: 88, protein: 0.5, carb: 17, fat: 0 },
+    { name: 'cannellini beans', category: 'protein_carb', kcal: 127, protein: 8.7, carb: 23, fat: 0.5 },
+    { name: 'oyster sauce', category: 'carb', kcal: 51, protein: 1.3, carb: 11, fat: 0.3, unitG: 16 },
+    { name: 'bean sprouts', category: 'veg', kcal: 30, protein: 3, carb: 6, fat: 0.2 },
+    { name: 'brown sugar', category: 'carb', kcal: 380, protein: 0, carb: 98, fat: 0 },
+    { name: 'vegetable broth', category: 'carb', kcal: 5, protein: 0.3, carb: 1, fat: 0 },
+    { name: 'chicken broth', category: 'protein', kcal: 10, protein: 1.2, carb: 0.5, fat: 0.3 },
+    { name: 'glass noodles', category: 'carb', kcal: 350, protein: 0.2, carb: 86, fat: 0 }
   ];
 
   function findIngredient(text) {
@@ -3429,7 +3769,73 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     { name: 'cappuccino', shortLabel: 'Cappuccino, tall', assumption: 'estimate, recipe basis with whole milk', kcal: 100, protein: 7, carb: 10, fat: 4, unitLabel: 'cup' },
     { name: 'latte', shortLabel: 'Cafe latte, tall', assumption: 'estimate, recipe basis with whole milk', kcal: 150, protein: 10, carb: 15, fat: 6, unitLabel: 'cup' },
     { name: 'frappuccino', shortLabel: 'Java Chip Frappuccino, tall', assumption: 'estimate, recipe basis', kcal: 320, protein: 6, carb: 64, fat: 19, unitLabel: 'cup' },
-    { name: 'cold coffee', shortLabel: 'Cafe-style cold coffee', assumption: 'estimate, 1 glass', kcal: 280, protein: 6, carb: 35, fat: 12, unitLabel: 'glass' }
+    { name: 'cold coffee', shortLabel: 'Cafe-style cold coffee', assumption: 'estimate, 1 glass', kcal: 280, protein: 6, carb: 35, fat: 12, unitLabel: 'glass' },
+    { name: 'paneer tikka masala', shortLabel: 'Paneer tikka masala, generic', assumption: 'standard serving with gravy, no rice', kcal: 320, protein: 14, carb: 12, fat: 24, unitLabel: 'serving' },
+    { name: 'egg curry', shortLabel: 'Egg curry (2 eggs), generic', assumption: 'standard dhaba-style serving, no rice', kcal: 220, protein: 12, carb: 8, fat: 15, unitLabel: 'serving' },
+    { name: 'shakshuka', shortLabel: 'Shakshuka (2 eggs), generic', assumption: 'standard serving, no bread', kcal: 230, protein: 14, carb: 12, fat: 14, unitLabel: 'serving' },
+    { name: 'chicken shawarma', shortLabel: 'Chicken shawarma, generic', assumption: 'spiced chicken only, no pita or sauce', kcal: 300, protein: 35, carb: 3, fat: 16, unitLabel: 'serving' },
+    { name: 'chicken tinga', shortLabel: 'Chicken tinga, generic', assumption: 'shredded chicken in chipotle-tomato sauce, no tortilla', kcal: 250, protein: 28, carb: 8, fat: 11, unitLabel: 'serving' },
+    { name: 'chicken teriyaki', shortLabel: 'Chicken teriyaki, generic', assumption: 'standard serving, no rice', kcal: 280, protein: 30, carb: 14, fat: 10, unitLabel: 'serving' },
+    { name: 'teriyaki salmon', shortLabel: 'Teriyaki salmon, generic', assumption: 'one fillet with glaze, no rice', kcal: 350, protein: 30, carb: 10, fat: 20, unitLabel: 'serving' },
+    { name: 'mapo tofu', shortLabel: 'Mapo tofu, generic', assumption: 'standard serving, no rice', kcal: 220, protein: 14, carb: 8, fat: 15, unitLabel: 'serving' },
+    { name: 'vegetable tagine', shortLabel: 'Moroccan vegetable tagine, generic', assumption: 'standard serving, no couscous', kcal: 250, protein: 8, carb: 38, fat: 8, unitLabel: 'serving' },
+    { name: 'ful medames', shortLabel: 'Ful medames, generic', assumption: 'standard fava bean serving with oil, no bread', kcal: 220, protein: 12, carb: 32, fat: 6, unitLabel: 'serving' },
+    { name: 'muhammara', shortLabel: 'Muhammara (walnut-pepper dip)', assumption: 'estimate, 1/4 cup serving', kcal: 180, protein: 4, carb: 10, fat: 15, unitLabel: '1/4 cup' },
+    { name: 'huevos rancheros', shortLabel: 'Huevos rancheros, generic', assumption: 'standard serving with tortilla and beans', kcal: 380, protein: 18, carb: 32, fat: 20, unitLabel: 'serving' },
+    { name: 'esquites', shortLabel: 'Esquites (Mexican street corn salad)', assumption: 'estimate, 1 cup serving', kcal: 180, protein: 5, carb: 22, fat: 9, unitLabel: 'cup' },
+    { name: 'tamagoyaki', shortLabel: 'Tamagoyaki (Japanese rolled omelette)', assumption: 'estimate, 2-3 egg serving', kcal: 150, protein: 11, carb: 3, fat: 10, unitLabel: 'serving' },
+    { name: 'scallion pancake', shortLabel: 'Scallion pancake, generic', assumption: 'estimate, 1 pancake', kcal: 220, protein: 4, carb: 28, fat: 10, unitLabel: 'pancake' },
+    { name: 'chilaquiles', shortLabel: 'Chilaquiles, generic', assumption: 'standard serving with salsa and beans', kcal: 280, protein: 8, carb: 35, fat: 12, unitLabel: 'serving' },
+    { name: 'keema paratha', shortLabel: 'Keema paratha, generic', assumption: 'standard serving, meat-stuffed flatbread', kcal: 320, protein: 14, carb: 30, fat: 16, unitLabel: 'piece' },
+    { name: 'moong dal chilla', shortLabel: 'Moong dal chilla, generic', assumption: 'estimate, 1 pancake', kcal: 150, protein: 8, carb: 20, fat: 4, unitLabel: 'piece' },
+    { name: 'masala oats', shortLabel: 'Masala oats, generic', assumption: 'standard savory oats bowl', kcal: 180, protein: 6, carb: 28, fat: 5, unitLabel: 'bowl' },
+    { name: 'chicken kofta', shortLabel: 'Chicken kofta, generic', assumption: 'estimate, 3-4 pieces, no pita or sauce', kcal: 280, protein: 26, carb: 4, fat: 18, unitLabel: 'serving' },
+    { name: 'vegan chili', shortLabel: 'Vegan bean chili, generic', assumption: 'estimate, 1 cup serving', kcal: 280, protein: 14, carb: 45, fat: 5, unitLabel: 'cup' },
+    { name: 'tofu bhurji', shortLabel: 'Tofu bhurji (Indian scramble), generic', assumption: 'standard serving, no bread', kcal: 210, protein: 16, carb: 8, fat: 13, unitLabel: 'serving' },
+    { name: 'tofu scramble', shortLabel: 'Tofu scramble, generic', assumption: 'standard serving with vegetables', kcal: 200, protein: 15, carb: 8, fat: 12, unitLabel: 'serving' },
+    { name: 'carne asada', shortLabel: 'Carne asada (grilled steak), generic', assumption: 'estimate, standard taco-fillling portion', kcal: 250, protein: 26, carb: 1, fat: 16, unitLabel: 'serving' },
+    { name: 'som tam', shortLabel: 'Som tam (green papaya salad), generic', assumption: 'standard serving', kcal: 130, protein: 4, carb: 22, fat: 4, unitLabel: 'serving' },
+    { name: 'puttanesca', shortLabel: 'Pasta puttanesca, generic', assumption: 'standard serving with pasta', kcal: 380, protein: 12, carb: 60, fat: 12, unitLabel: 'serving' },
+    { name: 'chicken rollatini', shortLabel: 'Chicken rollatini, generic', assumption: 'standard serving, no pasta', kcal: 420, protein: 38, carb: 15, fat: 22, unitLabel: 'serving' },
+    { name: 'pasta e fagioli', shortLabel: 'Pasta e fagioli, generic', assumption: 'standard bowl', kcal: 320, protein: 14, carb: 50, fat: 8, unitLabel: 'bowl' },
+    { name: 'teriyaki tofu', shortLabel: 'Teriyaki tofu, generic', assumption: 'standard serving, no rice', kcal: 280, protein: 18, carb: 18, fat: 16, unitLabel: 'serving' },
+    { name: 'yaki onigiri', shortLabel: 'Yaki onigiri (grilled rice ball), generic', assumption: 'estimate, 1 piece', kcal: 150, protein: 3, carb: 32, fat: 1, unitLabel: 'piece' },
+    { name: 'ricotta pancakes', shortLabel: 'Italian ricotta pancakes, generic', assumption: 'estimate, standard stack', kcal: 380, protein: 16, carb: 40, fat: 17, unitLabel: 'serving' },
+    { name: 'frittata', shortLabel: 'Ricotta and greens frittata, generic', assumption: 'standard serving', kcal: 280, protein: 18, carb: 8, fat: 20, unitLabel: 'serving' },
+    { name: 'gyeranjjim', shortLabel: 'Gyeranjjim (Korean steamed eggs), generic', assumption: 'standard serving', kcal: 160, protein: 13, carb: 2, fat: 11, unitLabel: 'serving' },
+    { name: 'vegan congee', shortLabel: 'Vegan mushroom congee, generic', assumption: 'standard bowl', kcal: 180, protein: 5, carb: 35, fat: 3, unitLabel: 'bowl' },
+    { name: 'mango sticky rice', shortLabel: 'Mango sticky rice, generic', assumption: 'standard serving', kcal: 380, protein: 5, carb: 70, fat: 10, unitLabel: 'serving' },
+    { name: 'summer rolls', shortLabel: 'Fresh Thai summer rolls, generic', assumption: 'estimate, 2 rolls with peanut sauce', kcal: 220, protein: 8, carb: 28, fat: 9, unitLabel: 'serving' },
+    { name: 'thai cucumber salad', shortLabel: 'Thai cucumber salad, generic', assumption: 'standard serving', kcal: 90, protein: 2, carb: 12, fat: 4, unitLabel: 'serving' },
+    { name: 'oi muchim', shortLabel: 'Oi muchim (spicy cucumber salad), generic', assumption: 'standard serving', kcal: 60, protein: 1.5, carb: 9, fat: 2, unitLabel: 'serving' },
+    { name: 'thai green curry', shortLabel: 'Thai green curry with chicken, generic', assumption: 'standard serving, no rice', kcal: 380, protein: 25, carb: 12, fat: 26, unitLabel: 'serving' },
+    { name: 'thai red curry', shortLabel: 'Thai red curry with chicken, generic', assumption: 'standard serving, no rice', kcal: 380, protein: 25, carb: 12, fat: 26, unitLabel: 'serving' },
+    { name: 'tom yum soup', shortLabel: 'Tom yum soup, generic', assumption: 'standard bowl', kcal: 150, protein: 15, carb: 8, fat: 6, unitLabel: 'bowl' },
+    { name: 'pad see ew', shortLabel: 'Pad see ew, generic', assumption: 'standard plate', kcal: 420, protein: 22, carb: 50, fat: 14, unitLabel: 'plate' },
+    { name: 'pad kra pao', shortLabel: 'Pad kra pao (Thai holy basil stir-fry), generic', assumption: 'standard serving with egg, no rice', kcal: 380, protein: 28, carb: 15, fat: 22, unitLabel: 'serving' },
+    { name: 'bibimbap', shortLabel: 'Bibimbap, generic', assumption: 'standard bowl with rice, vegetables, protein, and egg', kcal: 550, protein: 25, carb: 70, fat: 18, unitLabel: 'bowl' },
+    { name: 'japchae', shortLabel: 'Japchae (Korean glass noodles), generic', assumption: 'standard serving', kcal: 320, protein: 10, carb: 45, fat: 12, unitLabel: 'serving' },
+    { name: 'kimchi jjigae', shortLabel: 'Kimchi jjigae (kimchi stew), generic', assumption: 'standard bowl', kcal: 280, protein: 18, carb: 12, fat: 17, unitLabel: 'bowl' },
+    { name: 'sundubu jjigae', shortLabel: 'Sundubu jjigae (soft tofu stew), generic', assumption: 'standard bowl', kcal: 260, protein: 16, carb: 10, fat: 16, unitLabel: 'bowl' },
+    { name: 'pajeon', shortLabel: 'Pajeon (Korean scallion pancake), generic', assumption: 'estimate, 1 pancake', kcal: 300, protein: 12, carb: 35, fat: 12, unitLabel: 'pancake' },
+    { name: 'chicken parmesan', shortLabel: 'Chicken parmesan, generic', assumption: 'standard serving, no pasta', kcal: 450, protein: 38, carb: 22, fat: 22, unitLabel: 'serving' },
+    { name: 'pasta alla norma', shortLabel: 'Pasta alla norma, generic', assumption: 'standard serving', kcal: 420, protein: 12, carb: 65, fat: 14, unitLabel: 'serving' },
+    { name: 'baked ziti', shortLabel: 'Baked ziti, generic', assumption: 'standard serving', kcal: 480, protein: 20, carb: 55, fat: 20, unitLabel: 'serving' },
+    { name: 'mushroom risotto', shortLabel: 'Mushroom risotto, generic', assumption: 'standard serving', kcal: 380, protein: 10, carb: 55, fat: 12, unitLabel: 'serving' },
+    { name: 'minestrone', shortLabel: 'Minestrone soup, generic', assumption: 'standard bowl', kcal: 220, protein: 9, carb: 35, fat: 6, unitLabel: 'bowl' },
+    { name: 'bruschetta', shortLabel: 'Bruschetta, generic', assumption: 'estimate, 4 pieces', kcal: 180, protein: 4, carb: 28, fat: 6, unitLabel: 'serving' },
+    { name: 'caprese salad', shortLabel: 'Caprese salad, generic', assumption: 'standard serving', kcal: 250, protein: 14, carb: 8, fat: 19, unitLabel: 'serving' },
+    { name: 'vegetable gyoza', shortLabel: 'Vegetable gyoza, generic', assumption: 'estimate, 6 pieces', kcal: 220, protein: 6, carb: 32, fat: 8, unitLabel: 'serving' },
+    { name: 'vegetable ramen', shortLabel: 'Vegetable ramen, generic', assumption: 'standard bowl', kcal: 420, protein: 15, carb: 60, fat: 14, unitLabel: 'bowl' },
+    { name: 'yakisoba', shortLabel: 'Yakisoba, generic', assumption: 'standard serving', kcal: 400, protein: 12, carb: 55, fat: 15, unitLabel: 'serving' },
+    { name: 'japanese curry', shortLabel: 'Japanese curry, generic', assumption: 'standard serving with rice', kcal: 450, protein: 12, carb: 65, fat: 16, unitLabel: 'serving' },
+    { name: 'onigiri', shortLabel: 'Onigiri (rice ball), generic', assumption: 'estimate, 1 piece', kcal: 180, protein: 4, carb: 38, fat: 1, unitLabel: 'piece' },
+    { name: 'kung pao chicken', shortLabel: 'Kung pao chicken, generic', assumption: 'standard serving, no rice', kcal: 380, protein: 30, carb: 15, fat: 22, unitLabel: 'serving' },
+    { name: 'dan dan noodles', shortLabel: 'Dan dan noodles, generic', assumption: 'standard serving', kcal: 480, protein: 20, carb: 55, fat: 20, unitLabel: 'serving' },
+    { name: 'mapo eggplant', shortLabel: 'Mapo eggplant, generic', assumption: 'standard serving, no rice', kcal: 250, protein: 8, carb: 18, fat: 16, unitLabel: 'serving' },
+    { name: 'gyeran bap', shortLabel: 'Gyeran bap (Korean egg rice), generic', assumption: 'standard bowl', kcal: 350, protein: 12, carb: 55, fat: 10, unitLabel: 'bowl' },
+    { name: 'chicken and broccoli', shortLabel: 'Chicken and broccoli (Chinese takeout style), generic', assumption: 'standard serving, no rice', kcal: 320, protein: 32, carb: 15, fat: 14, unitLabel: 'serving' },
+    { name: 'agedashi tofu', shortLabel: 'Agedashi tofu, generic', assumption: 'standard serving', kcal: 200, protein: 10, carb: 14, fat: 12, unitLabel: 'serving' }
   ];
 
   // Populate the tracker's autocomplete suggestions: named dishes/products/restaurant items first
@@ -3477,6 +3883,16 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
   var weightUnitRegex = new RegExp('(\\d+(\\.\\d+)?)\\s*(' + weightUnitPattern + ')\\b', 'i');
 
   function extractGrams(segment) {
+    // "1/2 cup" or "1 1/2 cups" must be checked before the plain decimal regex below: that regex
+    // isn't anchored and has no concept of a fraction slash, so on "1/2 cup" it matches starting
+    // at the "2" (since "2 cup" alone satisfies the pattern) and silently reads "half a cup" as
+    // "two cups" instead.
+    var fracUnitMatch = segment.match(new RegExp('(?:(\\d+)\\s+)?(\\d+)\\/(\\d+)\\s*(' + weightUnitPattern + ')\\b', 'i'));
+    if (fracUnitMatch) {
+      var whole = fracUnitMatch[1] ? parseInt(fracUnitMatch[1], 10) : 0;
+      var fracVal = whole + parseInt(fracUnitMatch[2], 10) / parseInt(fracUnitMatch[3], 10);
+      return fracVal * weightUnitGrams[fracUnitMatch[4].toLowerCase()];
+    }
     var m = segment.match(weightUnitRegex);
     if (!m) return null;
     return parseFloat(m[1]) * weightUnitGrams[m[3].toLowerCase()];
@@ -3594,67 +4010,121 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     push: {
       bodyweight: [
         { name: 'Push-up', muscle: 'chest' }, { name: 'Wide push-up', muscle: 'chest' },
-        { name: 'Decline push-up (feet elevated)', muscle: 'chest' }, { name: 'Diamond push-up', muscle: 'triceps' },
-        { name: 'Pike push-up', muscle: 'shoulders' }, { name: 'Wall handstand hold', muscle: 'shoulders' },
-        { name: 'Dips (chair or sturdy edge)', muscle: 'triceps' }
+        { name: 'Incline push-up (hands elevated)', muscle: 'chest' }, { name: 'Decline push-up (feet elevated)', muscle: 'chest' },
+        { name: 'Diamond push-up', muscle: 'triceps' }, { name: 'Pike push-up', muscle: 'shoulders' },
+        { name: 'Wall handstand hold', muscle: 'shoulders' }, { name: 'Dips (chair or sturdy edge)', muscle: 'triceps' },
+        { name: 'Archer push-up', muscle: 'chest' }, { name: 'Hindu push-up', muscle: 'shoulders' }
       ],
       freeWeights: [
-        { name: 'Dumbbell bench press', muscle: 'chest' }, { name: 'Dumbbell fly', muscle: 'chest' },
-        { name: 'Dumbbell shoulder press', muscle: 'shoulders' }, { name: 'Lateral raise', muscle: 'shoulders' },
-        { name: 'Overhead tricep extension', muscle: 'triceps' }, { name: 'Close-grip push-up', muscle: 'triceps' }
+        { name: 'Dumbbell bench press', muscle: 'chest' }, { name: 'Dumbbell incline press', muscle: 'chest' },
+        { name: 'Dumbbell floor press', muscle: 'chest' }, { name: 'Dumbbell fly', muscle: 'chest' },
+        { name: 'Dumbbell shoulder press', muscle: 'shoulders' }, { name: 'Arnold press', muscle: 'shoulders' },
+        { name: 'Lateral raise', muscle: 'shoulders' }, { name: 'Front raise', muscle: 'shoulders' },
+        { name: 'Overhead tricep extension', muscle: 'triceps' }, { name: 'Dumbbell kickback', muscle: 'triceps' },
+        { name: 'Close-grip push-up', muscle: 'triceps' }
       ],
       gym: [
         { name: 'Barbell bench press', muscle: 'chest' }, { name: 'Incline bench press', muscle: 'chest' },
-        { name: 'Machine chest press', muscle: 'chest' }, { name: 'Overhead press', muscle: 'shoulders' },
-        { name: 'Cable lateral raise', muscle: 'shoulders' }, { name: 'Cable tricep pushdown', muscle: 'triceps' }
+        { name: 'Decline bench press', muscle: 'chest' }, { name: 'Machine chest press', muscle: 'chest' },
+        { name: 'Cable crossover', muscle: 'chest' }, { name: 'Cable standing fly', muscle: 'chest' },
+        { name: 'Overhead press', muscle: 'shoulders' }, { name: 'Machine shoulder press', muscle: 'shoulders' },
+        { name: 'Cable lateral raise', muscle: 'shoulders' }, { name: 'Cable front raise', muscle: 'shoulders' },
+        { name: 'Cable tricep pushdown', muscle: 'triceps' }, { name: 'Overhead cable tricep extension', muscle: 'triceps' },
+        { name: 'Assisted dip machine', muscle: 'triceps' }
+      ],
+      band: [
+        { name: 'Band chest press', muscle: 'chest' }, { name: 'Band push-up (band across back)', muscle: 'chest' },
+        { name: 'Band overhead press', muscle: 'shoulders' }, { name: 'Band lateral raise', muscle: 'shoulders' },
+        { name: 'Band front raise', muscle: 'shoulders' }, { name: 'Band tricep pushdown', muscle: 'triceps' },
+        { name: 'Band tricep kickback', muscle: 'triceps' }
       ]
     },
     pull: {
       bodyweight: [
-        { name: 'Pull-up (if a bar is available)', muscle: 'back' }, { name: 'Doorway row', muscle: 'back' },
-        { name: 'Superman', muscle: 'back' }, { name: 'Towel curl (isometric)', muscle: 'biceps' }
+        { name: 'Pull-up (if a bar is available)', muscle: 'back' }, { name: 'Chin-up (if a bar is available)', muscle: 'biceps' },
+        { name: 'Doorway row', muscle: 'back' }, { name: 'Superman', muscle: 'back' },
+        { name: 'Australian / inverted row', muscle: 'back' }, { name: 'Scapular pull-up (if a bar is available)', muscle: 'back' },
+        { name: 'Towel curl (isometric)', muscle: 'biceps' }
       ],
       freeWeights: [
         { name: 'Dumbbell row', muscle: 'back' }, { name: 'Renegade row', muscle: 'back' },
-        { name: 'Bicep curl', muscle: 'biceps' }, { name: 'Hammer curl', muscle: 'biceps' }
+        { name: 'Dumbbell pullover', muscle: 'back' }, { name: 'Dumbbell shrug', muscle: 'back' },
+        { name: 'Bicep curl', muscle: 'biceps' }, { name: 'Hammer curl', muscle: 'biceps' },
+        { name: 'Incline dumbbell curl', muscle: 'biceps' }, { name: 'Concentration curl', muscle: 'biceps' },
+        { name: 'Zottman curl', muscle: 'biceps' }
       ],
       gym: [
         { name: 'Lat pulldown', muscle: 'back' }, { name: 'Seated cable row', muscle: 'back' },
-        { name: 'Barbell row', muscle: 'back' }, { name: 'Cable curl', muscle: 'biceps' }, { name: 'Preacher curl', muscle: 'biceps' }
+        { name: 'Barbell row', muscle: 'back' }, { name: 'T-bar row', muscle: 'back' },
+        { name: 'Straight-arm cable pulldown', muscle: 'back' }, { name: 'Cable face pull', muscle: 'back' },
+        { name: 'Cable curl', muscle: 'biceps' }, { name: 'Preacher curl', muscle: 'biceps' },
+        { name: 'Machine curl', muscle: 'biceps' }, { name: 'Cable hammer curl', muscle: 'biceps' }
+      ],
+      band: [
+        { name: 'Band row', muscle: 'back' }, { name: 'Band pull-apart', muscle: 'back' },
+        { name: 'Band lat pulldown', muscle: 'back' }, { name: 'Band face pull', muscle: 'back' },
+        { name: 'Band bicep curl', muscle: 'biceps' }, { name: 'Band hammer curl', muscle: 'biceps' }
       ]
     },
     legs: {
       bodyweight: [
         { name: 'Bodyweight squat', muscle: 'legs' }, { name: 'Walking lunge', muscle: 'legs' },
-        { name: 'Glute bridge', muscle: 'legs' }, { name: 'Calf raise', muscle: 'legs' }, { name: 'Wall sit', muscle: 'legs' }
+        { name: 'Reverse lunge', muscle: 'legs' }, { name: 'Bulgarian split squat', muscle: 'legs' },
+        { name: 'Step-up (chair or sturdy step)', muscle: 'legs' }, { name: 'Glute bridge', muscle: 'legs' },
+        { name: 'Single-leg glute bridge', muscle: 'legs' }, { name: 'Calf raise', muscle: 'legs' },
+        { name: 'Wall sit', muscle: 'legs' }
       ],
       freeWeights: [
         { name: 'Goblet squat', muscle: 'legs' }, { name: 'Dumbbell Romanian deadlift', muscle: 'legs' },
-        { name: 'Weighted walking lunge', muscle: 'legs' }, { name: 'Weighted calf raise', muscle: 'legs' }
+        { name: 'Weighted walking lunge', muscle: 'legs' }, { name: 'Dumbbell Bulgarian split squat', muscle: 'legs' },
+        { name: 'Weighted calf raise', muscle: 'legs' }, { name: 'Dumbbell step-up', muscle: 'legs' },
+        { name: 'Kettlebell swing', muscle: 'legs' }, { name: 'Kettlebell Turkish get-up', muscle: 'legs' },
+        { name: 'Single-arm kettlebell deadlift', muscle: 'legs' }
       ],
       gym: [
         { name: 'Barbell squat', muscle: 'legs' }, { name: 'Leg press', muscle: 'legs' },
         { name: 'Romanian deadlift', muscle: 'legs' }, { name: 'Leg curl machine', muscle: 'legs' },
-        { name: 'Leg extension machine', muscle: 'legs' }, { name: 'Seated calf raise', muscle: 'legs' }
+        { name: 'Leg extension machine', muscle: 'legs' }, { name: 'Seated calf raise', muscle: 'legs' },
+        { name: 'Standing calf raise machine', muscle: 'legs' }, { name: 'Hack squat machine', muscle: 'legs' },
+        { name: 'Smith machine squat', muscle: 'legs' }, { name: 'Hip abduction machine', muscle: 'legs' },
+        { name: 'Hip adduction machine', muscle: 'legs' }
+      ],
+      band: [
+        { name: 'Band squat', muscle: 'legs' }, { name: 'Band lateral walk', muscle: 'legs' },
+        { name: 'Band deadlift / good morning', muscle: 'legs' }, { name: 'Band glute bridge', muscle: 'legs' },
+        { name: 'Band clamshell', muscle: 'legs' }
       ]
     },
     core: {
       bodyweight: [
         { name: 'Plank', muscle: 'core' }, { name: 'Bicycle crunch', muscle: 'core' },
-        { name: 'Leg raise', muscle: 'core' }, { name: 'Side plank', muscle: 'core' }, { name: 'Mountain climber', muscle: 'core' }
+        { name: 'Leg raise', muscle: 'core' }, { name: 'Side plank', muscle: 'core' },
+        { name: 'Mountain climber', muscle: 'core' }, { name: 'Reverse crunch', muscle: 'core' },
+        { name: 'Hollow-body hold', muscle: 'core' }, { name: 'Dead bug', muscle: 'core' },
+        { name: 'Bird dog', muscle: 'core' }, { name: 'Flutter kick', muscle: 'core' }
       ],
       freeWeights: [
-        { name: 'Weighted plank', muscle: 'core' }, { name: 'Weighted Russian twist', muscle: 'core' }, { name: 'Hanging leg raise', muscle: 'core' }
+        { name: 'Weighted plank', muscle: 'core' }, { name: 'Weighted Russian twist', muscle: 'core' },
+        { name: 'Hanging leg raise', muscle: 'core' }, { name: 'Weighted sit-up', muscle: 'core' },
+        { name: 'Suitcase carry', muscle: 'core' }
       ],
       gym: [
-        { name: 'Cable crunch', muscle: 'core' }, { name: 'Ab machine', muscle: 'core' }, { name: 'Hanging leg raise', muscle: 'core' }
+        { name: 'Cable crunch', muscle: 'core' }, { name: 'Ab machine', muscle: 'core' },
+        { name: 'Hanging leg raise', muscle: 'core' }, { name: 'Cable woodchop', muscle: 'core' },
+        { name: 'Pallof press', muscle: 'core' }, { name: 'Ab-wheel rollout', muscle: 'core' }
+      ],
+      band: [
+        { name: 'Band woodchopper', muscle: 'core' }, { name: 'Band Pallof press', muscle: 'core' },
+        { name: 'Band deadbug pull', muscle: 'core' }
       ]
     },
     calisthenics: {
       bodyweight: [
-        { name: 'Pull-up', muscle: 'back' }, { name: 'Dip (bar or sturdy chair)', muscle: 'triceps' },
-        { name: 'Pistol squat progression', muscle: 'legs' }, { name: 'Archer push-up', muscle: 'chest' },
-        { name: 'L-sit hold', muscle: 'core' }, { name: 'Handstand hold (against a wall)', muscle: 'shoulders' }
+        { name: 'Pull-up', muscle: 'back' }, { name: 'Chin-up', muscle: 'biceps' },
+        { name: 'Dip (bar or sturdy chair)', muscle: 'triceps' }, { name: 'Pistol squat progression', muscle: 'legs' },
+        { name: 'Archer push-up', muscle: 'chest' }, { name: 'Archer pull-up', muscle: 'back' },
+        { name: 'L-sit hold', muscle: 'core' }, { name: 'Handstand hold (against a wall)', muscle: 'shoulders' },
+        { name: 'Handstand push-up progression', muscle: 'shoulders' }, { name: 'Front lever tuck hold', muscle: 'core' }
       ]
     }
   };
@@ -3684,13 +4154,24 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
 
   // Builds today's exercise list for a chosen split + equipment tier, applying condition swaps
   // and adding a cardio finisher note, same as the main plan's daily sessions.
+  function shuffleArray(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
   function buildQuickSession(splitKey, equipmentTier) {
     var def = splitDefinitions[splitKey];
     var exercises = [];
     def.forEach(function (part) {
       var pool = quickSessionPool[part.pool][equipmentTier] || quickSessionPool[part.pool].bodyweight;
       var filtered = part.muscle ? pool.filter(function (e) { return e.muscle === part.muscle; }) : pool;
-      filtered.slice(0, part.count).forEach(function (e) { if (exercises.indexOf(e.name) === -1) exercises.push(e.name); });
+      // Shuffled so a larger pool actually shows up as rotating variety across sessions, rather
+      // than always returning the same first few exercises in the order they were written.
+      shuffleArray(filtered).slice(0, part.count).forEach(function (e) { if (exercises.indexOf(e.name) === -1) exercises.push(e.name); });
     });
     return exercises;
   }
@@ -3702,7 +4183,8 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
       swaps: {
         'Barbell squat': 'Goblet squat (light, controlled)', 'Goblet squat': 'Goblet squat (light, controlled)',
         'Romanian deadlift': 'Romanian deadlift (light, controlled)', 'Dumbbell Romanian deadlift': 'Dumbbell Romanian deadlift (light, controlled)',
-        'Barbell row': 'Chest-supported row', 'Dumbbell row': 'Chest-supported dumbbell row', 'Renegade row': 'Chest-supported dumbbell row'
+        'Barbell row': 'Chest-supported row', 'Dumbbell row': 'Chest-supported dumbbell row', 'Renegade row': 'Chest-supported dumbbell row',
+        'Band deadlift / good morning': 'Band glute bridge'
       },
       add: 'Bird dog'
     },
@@ -3711,7 +4193,7 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
         'Barbell squat': 'Box squat (partial range)', 'Bodyweight squat': 'Box squat, partial range (bodyweight)',
         'Goblet squat': 'Box squat, partial range (goblet)', 'Leg press': 'Leg press (limited depth)',
         'Walking lunge': 'Step-up (low step)', 'Weighted walking lunge': 'Step-up, weighted (low step)',
-        'Pistol squat progression': 'Assisted box squat'
+        'Pistol squat progression': 'Assisted box squat', 'Band squat': 'Band glute bridge (no knee bend)'
       },
       add: 'Terminal knee extension'
     }
@@ -3721,6 +4203,11 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     if (equipmentTier === 'bodyweight') {
       var bwScheme = { high: { reps: 6, sets: 2 }, medium: { reps: 10, sets: 3 }, low: { reps: 15, sets: 4 } }[intensity] || { reps: 10, sets: 3 };
       return { name: name, setsReps: bwScheme.sets + ' sets', weight: bwScheme.reps + ' reps' };
+    }
+    if (equipmentTier === 'band') {
+      var bandScheme = { high: { reps: 10, sets: 3 }, medium: { reps: 15, sets: 3 }, low: { reps: 20, sets: 3 } }[intensity] || { reps: 15, sets: 3 };
+      var bandGuidance = { high: 'Heaviest band you can control for this rep range', medium: 'Medium tension band', low: 'Light band, controlled tempo' }[intensity];
+      return { name: name, setsReps: bandScheme.sets + ' x ' + bandScheme.reps, weight: bandGuidance };
     }
     var scheme = intensitySchemes[intensity] || intensitySchemes.medium;
     var guidance = { high: 'Heavy — near your limit for this rep range', medium: 'Moderate — challenging by the last rep', low: 'Light, controlled' }[intensity];
@@ -4001,7 +4488,7 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     else if (preferenceLower.indexOf('veg') !== -1 && preferenceLower.indexOf('non') === -1) preference = 'vegetarian';
     else if (preferenceLower.indexOf('non') !== -1 || /meat|chicken|fish|omni|pescat|keto|paleo|carnivore/.test(preferenceLower)) preference = 'nonVegetarian';
     else preference = 'vegetarian'; // safe default when we can't tell: never assumes meat is wanted
-    var allCuisines = ['indian', 'continental', 'mediterranean', 'asian'];
+    var allCuisines = Object.keys(mealBank);
     var selectedCuisines = document.getElementById('cuisine-all').checked
       ? allCuisines
       : Array.prototype.slice.call(document.querySelectorAll('.cuisine-check:checked')).map(function (c) { return c.value; });
@@ -4239,10 +4726,22 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     var isLowCarb = carbPct <= 40;
     var carbLevel = isLowCarb ? 'lowCarb' : 'balanced';
     var mealSet = { breakfast: [], lunch: [], dinner: [], snack: [] };
+    // A real non-veg eater doesn't have meat or eggs at every single meal — pulling every dish
+    // from just the non-veg bucket concentrates whatever's common there (eggs especially) across
+    // a day in a way nobody actually eats. Vegetarian and vegan stay strict single-bucket
+    // selections since those are genuine dietary restrictions, not just a looser preference.
+    var preferencesToPull = preference === 'nonVegetarian' ? ['vegetarian', 'vegan', 'nonVegetarian'] : [preference];
     selectedCuisines.forEach(function (cu) {
-      var set = mealBank[cu][preference][carbLevel];
-      ['breakfast', 'lunch', 'dinner', 'snack'].forEach(function (slot) { mealSet[slot] = mealSet[slot].concat(set[slot]); });
+      preferencesToPull.forEach(function (pref) {
+        var set = mealBank[cu][pref][carbLevel];
+        ['breakfast', 'lunch', 'dinner', 'snack'].forEach(function (slot) { mealSet[slot] = mealSet[slot].concat(set[slot]); });
+      });
     });
+    // Without this, concatenation leaves each preference bucket sitting in its own contiguous
+    // block, and the sequential day-offset cycling below could land a single day on an entire
+    // block at once — recreating the "every meal today happens to be meat" problem this was
+    // meant to fix, just shifted to a different day instead of solved.
+    ['breakfast', 'lunch', 'dinner', 'snack'].forEach(function (slot) { mealSet[slot] = shuffleArray(mealSet[slot]); });
     var weeklyMeals = mealDayLabels.map(function (day, i) {
       return {
         day: day,
@@ -4454,10 +4953,41 @@ h4.list-heading { font-size: 18px; line-height: 26px; font-weight: 700; color: v
     var divisibleTarget = targetKcal - wholeCountKcal - packagedKcal;
     var divisibleRatio = divisibleBaseline > 0 ? Math.min(2, Math.max(0.4, divisibleTarget / divisibleBaseline)) : 1;
 
+    // Nobody eats 500g of chicken in one sitting, and cramming a whole day's protein target into
+    // a single ingredient is exactly what makes high-protein plans hard to actually eat or digest.
+    // Cap each ingredient at a realistic single-meal serving, then hand whatever it couldn't
+    // absorb to the other divisible ingredients — iterating, since capping one ingredient can push
+    // the redistributed shortfall onto another until IT also hits its own cap. Without re-checking
+    // each round, a shortfall from one capped ingredient could get dumped entirely onto whichever
+    // ingredient is left, silently blowing past that ingredient's own cap instead of respecting it.
+    var remaining = divisible.slice();
+    var settledKcal = 0;
+    var currentTarget = divisibleTarget;
+    for (var pass = 0; pass < divisible.length + 1 && remaining.length > 0; pass++) {
+      var baseline = remaining.reduce(function (s, p) { return s + (p.grams / 100) * p.ingredient.kcal; }, 0);
+      var passRatio = baseline > 0 ? Math.max(0.4, currentTarget / baseline) : 1;
+      var stillOk = [];
+      var anyNewlyCapped = false;
+      remaining.forEach(function (p) {
+        var cap = p.ingredient.maxServeG || 280;
+        var naiveGrams = p.grams * passRatio;
+        if (naiveGrams > cap) {
+          p.newGrams = cap;
+          settledKcal += (cap / 100) * p.ingredient.kcal;
+          anyNewlyCapped = true;
+        } else {
+          p.newGrams = naiveGrams;
+          stillOk.push(p);
+        }
+      });
+      remaining = stillOk;
+      currentTarget = divisibleTarget - settledKcal;
+      if (!anyNewlyCapped) break;
+    }
+
     divisible.forEach(function (p) {
-      var newGrams = p.grams * divisibleRatio;
-      var step = newGrams >= 100 ? 25 : (newGrams >= 40 ? 10 : 5);
-      p.newGrams = Math.max(step, Math.round(newGrams / step) * step);
+      var step = p.newGrams >= 100 ? 25 : (p.newGrams >= 40 ? 10 : 5);
+      p.newGrams = Math.max(step, Math.round(p.newGrams / step) * step);
     });
 
     // Rebuild the text and compute final totals from the actual final quantities, so the printed
